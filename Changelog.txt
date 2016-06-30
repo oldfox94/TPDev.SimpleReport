@@ -1,0 +1,6 @@
+=== TPDev.SimpleReport ===
+++++++ CHANGELOG ++++++
+
+V1.0.0.0:
+ADD		Basestructure of TPDev.SimpleReport created
+
