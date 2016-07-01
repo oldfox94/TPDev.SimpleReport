@@ -43,8 +43,18 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ReportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TPDev.SimpleReport.Logger\TPDev.SimpleReport.Logger.csproj">
+      <Project>{b73f8a0c-93f0-4f3a-ae61-ab8bfcc074de}</Project>
+      <Name>TPDev.SimpleReport.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TPDev.SimpleReport.SharedLibrary\TPDev.SimpleReport.SharedLibrary.csproj">
+      <Project>{aba4622d-cd9d-4ec9-bb9e-a879b736faa0}</Project>
+      <Name>TPDev.SimpleReport.SharedLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
