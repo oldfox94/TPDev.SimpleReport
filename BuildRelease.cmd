@@ -1,6 +1,7 @@
-echo Copy files ...
-REM copy DbNotifyer\bin\Release\Hardcodet.Wpf.TaskbarNotification DbFactory\Bin\Release
-REM copy SQLiteLibrary\bin\Release\System.Data.SQLite.dll DbFactory\bin\Release
+echo Copy files from _External ...
+copy _External\*.* Release
+copy _External\*.* TPDev.SimpleReport.Viewer\bin\Debug
+copy _External\*.* TPDev.SimpleReport.Viewer\bin\Release
 REM copy SQLiteLibrary\SQLite.Interop.dll DbFactory\bin\Release
 REM copy MySQLLibrary\bin\Release\MySql.Data.dll DbFactory\bin\Release
 REM copy MySQLLibrary\bin\Release\MySql.Data.Entity.EF5.dll DbFactory\bin\Release
