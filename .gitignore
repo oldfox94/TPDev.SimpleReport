@@ -48,3 +48,7 @@ TPDev.SimpleReport.Viewer/obj/Release/TPDev.SimpleReport.Viewer.csproj.FileListA
 TPDev.SimpleReport.Viewer/obj/Release/TPDev.SimpleReport.Viewer.csprojResolveAssemblyReference.cache
 TPDev.SimpleReport.Viewer/obj/Release/TPDev.SimpleReport.Viewer.dll
 TPDev.SimpleReport.Viewer/obj/Release/TPDev.SimpleReport.Viewer.pdb
+*.cache
+TemporaryGeneratedFile_
+*TemporaryGeneratedFile_*
+.vs/SimpleReport/v14/.suo

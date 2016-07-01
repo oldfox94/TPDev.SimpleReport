@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPDev.SimpleReport.Template
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPDev.SimpleReport.SharedLibrary", "TPDev.SimpleReport.SharedLibrary\TPDev.SimpleReport.SharedLibrary.csproj", "{ABA4622D-CD9D-4EC9-BB9E-A879B736FAA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPDev.SimpleReport.Logger", "TPDev.SimpleReport.Logger\TPDev.SimpleReport.Logger.csproj", "{B73F8A0C-93F0-4F3A-AE61-AB8BFCC074DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ABA4622D-CD9D-4EC9-BB9E-A879B736FAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABA4622D-CD9D-4EC9-BB9E-A879B736FAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABA4622D-CD9D-4EC9-BB9E-A879B736FAA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B73F8A0C-93F0-4F3A-AE61-AB8BFCC074DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B73F8A0C-93F0-4F3A-AE61-AB8BFCC074DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B73F8A0C-93F0-4F3A-AE61-AB8BFCC074DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B73F8A0C-93F0-4F3A-AE61-AB8BFCC074DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
