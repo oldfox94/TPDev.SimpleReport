@@ -43,6 +43,9 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Services\TemplateFileHelper.cs" />
+    <Compile Include="Services\TemplateValidator.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

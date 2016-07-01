@@ -43,13 +43,15 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Models\Report\SimpleReportData.cs" />
+    <Compile Include="Models\Template\SimpleTemplateData.cs" />
+    <Compile Include="Models\Viewer\SimpleViewerData.cs" />
     <Compile Include="SLLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TPDev.SimpleReport.Logger\TPDev.SimpleReport.Logger.csproj">
