@@ -83,3 +83,16 @@ TPDev.SimpleReport.Viewer/obj/x86/Debug/TPDev.SimpleReport.Viewer_MarkupCompile.
 TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/WebBrowserOverlay.baml
 TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/WebBrowserOverlay.g.cs
 TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/WebBrowserOverlay.g.i.cs
+TPDev.SimpleReport.Logger/bin/Debug/TPDev.SimpleReport.Logger.dll
+TPDev.SimpleReport.Logger/bin/Debug/TPDev.SimpleReport.Logger.pdb
+TPDev.SimpleReport.Logger/obj/Debug/TPDev.SimpleReport.Logger.csproj.FileListAbsolute.txt
+TPDev.SimpleReport.Logger/obj/Debug/TPDev.SimpleReport.Logger.dll
+TPDev.SimpleReport.Logger/obj/Debug/TPDev.SimpleReport.Logger.pdb
+TPDev.SimpleReport.Logger/obj/Release/TPDev.SimpleReport.Logger.csproj.FileListAbsolute.txt
+TPDev.SimpleReport.Logger/obj/Release/TPDev.SimpleReport.Logger.dll
+TPDev.SimpleReport.Logger/obj/Release/TPDev.SimpleReport.Logger.pdb
+TPDev.SimpleReport.Service/bin/Debug/TPDev.SimpleReport.Logger.dll
+TPDev.SimpleReport.Service/bin/Debug/TPDev.SimpleReport.Logger.pdb
+TPDev.SimpleReport.Service/bin/Debug/TPDev.SimpleReport.SharedLibrary.dll
+TPDev.SimpleReport.Service/bin/Debug/TPDev.SimpleReport.SharedLibrary.pdb
+TPDev.SimpleReport.Service/obj/Release/build.force

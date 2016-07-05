@@ -43,6 +43,9 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Context\CurrentContext.cs" />
+    <Compile Include="Context\SLContext.cs" />
     <Compile Include="Models\Report\SimpleReportData.cs" />
     <Compile Include="Models\Template\SimpleTemplateData.cs" />
     <Compile Include="Models\Viewer\SimpleViewerData.cs" />

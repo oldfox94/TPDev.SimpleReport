@@ -2,11 +2,9 @@ echo Copy files from _External ...
 copy _External\*.* Release
 copy _External\*.* TPDev.SimpleReport.Viewer\bin\Debug
 copy _External\*.* TPDev.SimpleReport.Viewer\bin\Release
-REM copy SQLiteLibrary\SQLite.Interop.dll DbFactory\bin\Release
-REM copy MySQLLibrary\bin\Release\MySql.Data.dll DbFactory\bin\Release
-REM copy MySQLLibrary\bin\Release\MySql.Data.Entity.EF5.dll DbFactory\bin\Release
-REM copy MySQLLibrary\bin\Release\MySql.Data.Entity.EF6.dll DbFactory\bin\Release
-REM copy MySQLLibrary\bin\Release\MySql.Fabric.Plugin.dll DbFactory\bin\Release
+copy _External\*.* TPDev.SimpleReport.Viewer\bin\x86\Debug
+copy _External\*.* TPDev.SimpleReport.Viewer\bin\x86\Release
+copy _External\*.* TestApp\bin\Debug
 
 
 echo Building Project [Service] ...
