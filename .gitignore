@@ -301,3 +301,4 @@ TPDev.SimpleReport.TemplateManager/bin/Debug/TPDev.SimpleReport.Logger.pdb
 TPDev.SimpleReport.TemplateManager/bin/Debug/TPDev.SimpleReport.SharedLibrary.dll
 TPDev.SimpleReport.TemplateManager/bin/Debug/TPDev.SimpleReport.SharedLibrary.pdb
 TPDev.SimpleReport.TemplateManager/obj/Release/build.force
+TestApp/bin/Debug/TPDev.SimpleReportService.dll
