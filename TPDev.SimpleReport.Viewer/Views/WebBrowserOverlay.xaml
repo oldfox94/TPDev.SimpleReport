@@ -8,9 +8,9 @@
              xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <cefSharp:ChromiumWebBrowser x:Name="browserCtrl">
+    <Grid Name="MainGrid">
+        <!--<cefSharp:ChromiumWebBrowser x:Name="browserCtrl">
             
-        </cefSharp:ChromiumWebBrowser>
+        </cefSharp:ChromiumWebBrowser>-->
     </Grid>
 </UserControl>
