@@ -6,9 +6,22 @@
         xmlns:tpdev="clr-namespace:TPDev.SimpleReport.Viewer.Views;assembly=TPDev.SimpleReport.Viewer"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+        Title="TestApp" Height="450" Width="675" WindowStartupLocation="CenterScreen">
     <Grid>
-        <tpdev:WebBrowserOverlay x:Name="browserOverlay">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Name="ButLoadUrl" Content="Load Url" Click="OnLoadUrlClick"/>
+            <Button Name="ButLoadHtml" Content="Load Html" Click="OnLoadHtmlClick"/>
+            <Button Name="ButRefresh" Content="Refresh" Click="OnRefreshClick"/>
+            <Rectangle Width="10"/>
+            <Button Name="ButCleanupCache" Content="Clean Cache" Click="OnCleanupCacheClick"/>
+        </StackPanel>
+        
+        <tpdev:WebBrowserOverlay Grid.Row="1" x:Name="browserOverlay">
             
         </tpdev:WebBrowserOverlay>
     </Grid>

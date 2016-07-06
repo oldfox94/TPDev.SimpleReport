@@ -49,6 +49,8 @@
     <Compile Include="Models\Report\SimpleReportData.cs" />
     <Compile Include="Models\Template\SimpleTemplateData.cs" />
     <Compile Include="Models\Viewer\SimpleViewerData.cs" />
+    <Compile Include="Services\Helper\FileHelper.cs" />
+    <Compile Include="Services\Viewer\ViewerHelperService.cs" />
     <Compile Include="SLLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,9 @@
 ﻿using CefSharp.Wpf;
 using System.Windows;
 using System.Windows.Controls;
+using TPDev.SimpleReport.SharedLibrary.Services.Helper;
+using TPDev.SimpleReport.SharedLibrary.Services.Viewer;
+using TPDev.SimpleReport.Viewer.Context;
 
 namespace TPDev.SimpleReport.Viewer.Views
 {
@@ -9,6 +12,7 @@ namespace TPDev.SimpleReport.Viewer.Views
     /// </summary>
     public partial class WebBrowserOverlay : UserControl
     {
+        public ViewerHelperService Helper { get; set; }
         private ChromiumWebBrowser m_Browser { get; set; }
         public WebBrowserOverlay()
         {
@@ -19,51 +23,91 @@ namespace TPDev.SimpleReport.Viewer.Views
             Unloaded += OnUnloaded;
 
             Bootstrapper.Boot();
+            Helper = new ViewerHelperService();
 
-            m_Browser = new ChromiumWebBrowser();
-            m_Browser.SetBinding(IsEnabledProperty, "BrowserIsEnabled");
-
-            MainGrid.Children.Add(m_Browser);
+            m_Browser = browserCtrl;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            m_Browser.Unloaded += OnBrowserUnloaded;
 
+            m_Browser.FrameLoadStart += OnFrameLoadStart;
+            m_Browser.FrameLoadEnd += OnFrameLoadEnd;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            Bootstrapper.Shutdown();
+            Dispose();
         }
 
-        public void GoToUrl(string url)
+        public void Dispose()
+        {
+            m_Browser.Unloaded -= OnBrowserUnloaded;
+
+            m_Browser.FrameLoadStart -= OnFrameLoadStart;
+            m_Browser.FrameLoadEnd -= OnFrameLoadEnd;
+
+            Bootstrapper.Shutdown();
+            m_Browser.Dispose();
+        }
+
+        private void OnBrowserUnloaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void OnFrameLoadStart(object sender, CefSharp.FrameLoadStartEventArgs e)
+        {
+
+        }
+
+        private void OnFrameLoadEnd(object sender, CefSharp.FrameLoadEndEventArgs e)
+        {
+
+        }
+
+
+        public void LoadUrl(string url)
         {
             if (m_Browser == null) return;
             m_Browser.Load(url);
         }
 
-        public void SetHtmlContent(string content)
+        public void LoadHtml(string content)
         {
             if (m_Browser == null) return;
+
+            var tmpFile = FileHelper.StringToFile(content);
+            LoadUrl(@"file://" + tmpFile);
+
+            SrvContext.CleanupFiles.Add(tmpFile);
         }
 
-        public bool BrowserIsLoaded { get { return m_Browser.IsLoaded; } }
-        public bool BrowserIsLoading { get { return m_Browser.IsLoading; } }
-
-        //public bool BrowserIsEnabled { get { return m_Browser.IsEnabled; } set { m_Browser.IsEnabled = value; } }
-
-        public bool BrowserHasContent { get { return m_Browser.HasContent; } }
-
-
-        public bool BrowserIsEnabled
+        public void Refresh()
         {
-            get { return (bool)GetValue(BrowserIsEnabledProperty); }
-            set { SetValue(BrowserIsEnabledProperty, value); }
+            m_Browser.ReloadCommand.Execute(null);
         }
-        public static DependencyProperty BrowserIsEnabledProperty =
-            DependencyProperty.Register(
-                "BrowserIsEnabled",
-                typeof(bool),
-                typeof(WebBrowserOverlay));
+
+        public void Back()
+        {
+            m_Browser.BackCommand.Execute(null);
+        }
+
+        public void Forward()
+        {
+            m_Browser.ForwardCommand.Execute(null);
+        }
+
+
+        //public bool BrowserIsEnabled
+        //{
+        //    get { return (bool)GetValue(BrowserIsEnabledProperty); }
+        //    set { SetValue(BrowserIsEnabledProperty, value); }
+        //}
+        //public static DependencyProperty BrowserIsEnabledProperty =
+        //    DependencyProperty.Register(
+        //        "BrowserIsEnabled",
+        //        typeof(bool),
+        //        typeof(WebBrowserOverlay));
     }
 }

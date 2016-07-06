@@ -9,8 +9,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Name="MainGrid">
-        <!--<cefSharp:ChromiumWebBrowser x:Name="browserCtrl">
+        <cefSharp:ChromiumWebBrowser x:Name="browserCtrl">
             
-        </cefSharp:ChromiumWebBrowser>-->
+        </cefSharp:ChromiumWebBrowser>
     </Grid>
 </UserControl>
