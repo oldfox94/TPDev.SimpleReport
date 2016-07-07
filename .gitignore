@@ -326,3 +326,9 @@ TestApp/bin/Debug/HtmlAgilityPack.dll
 TestApp/bin/Debug/HtmlAgilityPack.pdb
 TestApp/bin/Debug/Log/ReporterLog.log
 TestApp/bin/Debug/SimpleReportConfig.xml
+TPDev.SimpleReport.Viewer/bin/Debug/HtmlAgilityPack.dll
+TPDev.SimpleReport.Viewer/bin/Debug/HtmlAgilityPack.pdb
+TPDev.SimpleReport.Viewer/bin/Release/HtmlAgilityPack.dll
+TPDev.SimpleReport.Viewer/bin/Release/HtmlAgilityPack.pdb
+TPDev.SimpleReport.Viewer/bin/x86/Release/HtmlAgilityPack.dll
+TPDev.SimpleReport.Viewer/bin/x86/Release/HtmlAgilityPack.pdb
