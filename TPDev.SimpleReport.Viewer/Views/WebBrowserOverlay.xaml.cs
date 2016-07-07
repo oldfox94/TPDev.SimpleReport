@@ -1,6 +1,8 @@
 ﻿using CefSharp.Wpf;
 using System.Windows;
 using System.Windows.Controls;
+using TPDev.SimpleReport.SharedLibrary.Events;
+using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
 using TPDev.SimpleReport.SharedLibrary.Services.Viewer;
 using TPDev.SimpleReport.Viewer.Context;
@@ -34,6 +36,8 @@ namespace TPDev.SimpleReport.Viewer.Views
 
             m_Browser.FrameLoadStart += OnFrameLoadStart;
             m_Browser.FrameLoadEnd += OnFrameLoadEnd;
+
+            SLEvents.LoadReport += OnLoadReport;
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -64,6 +68,11 @@ namespace TPDev.SimpleReport.Viewer.Views
         private void OnFrameLoadEnd(object sender, CefSharp.FrameLoadEndEventArgs e)
         {
 
+        }
+
+        private void OnLoadReport(SimpleEventArgs args)
+        {
+            LoadHtml(args.HtmlContent);
         }
 
 

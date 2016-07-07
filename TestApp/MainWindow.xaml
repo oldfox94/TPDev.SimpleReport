@@ -17,8 +17,12 @@
             <Button Name="ButLoadUrl" Content="Load Url" Click="OnLoadUrlClick"/>
             <Button Name="ButLoadHtml" Content="Load Html" Click="OnLoadHtmlClick"/>
             <Button Name="ButRefresh" Content="Refresh" Click="OnRefreshClick"/>
+            
             <Rectangle Width="10"/>
             <Button Name="ButCleanupCache" Content="Clean Cache" Click="OnCleanupCacheClick"/>
+
+            <Rectangle Width="10"/>
+            <Button Name="ButLoadSampleReport" Content="Load Sample Report" Click="OnLoadSampleReportClick"/>
         </StackPanel>
         
         <tpdev:WebBrowserOverlay Grid.Row="1" x:Name="browserOverlay">

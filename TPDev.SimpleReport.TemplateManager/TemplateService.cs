@@ -2,6 +2,7 @@
 using TPDev.SimpleReport.Logger.Models;
 using TPDev.SimpleReport.SharedLibrary;
 using TPDev.SimpleReport.SharedLibrary.Models.Template;
+using TPDev.SimpleReport.TemplateManager.Services;
 
 namespace TPDev.SimpleReport.TemplateManager
 {
@@ -12,6 +13,9 @@ namespace TPDev.SimpleReport.TemplateManager
             try
             {
                 Settings.TemplateLocation = templateLocation;
+                Settings.TemplateList = TemplateFileHelper.BuildTemplateList();
+
+
             }
             catch(Exception ex)
             {
@@ -22,15 +26,6 @@ namespace TPDev.SimpleReport.TemplateManager
                     Ex = ex,
                 });
             }
-        }
-
-        public void InitLogger(string logFileName, string logPath = null)
-        {
-            if (string.IsNullOrEmpty(logPath))
-                logPath = Environment.CurrentDirectory;
-
-            SLLog.Logger = new Logger.Logger(logPath, logFileName, "SimpleReport.TemplateService");
-            SLLog.WriteInfo("InitLogger", "Logger successfully initialized!");
         }
 
         public void SaveTemplate(SimpleTemplateData data)
@@ -54,12 +49,10 @@ namespace TPDev.SimpleReport.TemplateManager
         {
             try
             {
-                var data = new SimpleTemplateData
-                {
-
-                };
-
-                return data;
+                if (Settings.TemplateList.ContainsKey(templateName) && Settings.TemplateList[templateName].FileExists)
+                    return Settings.TemplateList[templateName];
+                else
+                    SLLog.WriteWarning("LoadTemplate", ToString(), "Template wurde nicht gefunden!");
             }
             catch(Exception ex)
             {

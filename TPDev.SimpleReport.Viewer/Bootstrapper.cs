@@ -1,5 +1,7 @@
 ﻿using CefSharp;
 using System.Collections.Generic;
+using TPDev.SimpleReport.SharedLibrary.Context;
+using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Models.Viewer;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
 using TPDev.SimpleReport.Viewer.Context;
@@ -10,17 +12,15 @@ namespace TPDev.SimpleReport.Viewer
     {
         public static void Boot()
         {
-            if (SharedLibrary.Context.SLContext.IsViewerInitialized) return;
+            if (SLContext.IsViewerInitialized) return;
 
-            SharedLibrary.Bootstrapper.Boot();
+            SharedLibrary.Bootstrapper.Boot(AppName.Viewer);
 
             SrvContext.ViewerData = new SimpleViewerData();
             SrvContext.CleanupFiles = new List<string>();
 
-            //var settings = new CefSettings();
-            //settings.LogSeverity = LogSeverity.Verbose;
 
-            //Cef.Initialize(settings);
+            SLContext.IsViewerInitialized = true;
         }
 
         public static void Shutdown()
@@ -28,7 +28,7 @@ namespace TPDev.SimpleReport.Viewer
             Cef.Shutdown();
             FileHelper.CleanupFiles(SrvContext.CleanupFiles);
 
-            SharedLibrary.Bootstrapper.Shutdown();
+            SharedLibrary.Bootstrapper.Shutdown(AppName.Viewer);
         }
     }
 }

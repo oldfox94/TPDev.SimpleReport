@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using TPDev.SimpleReport.Logger.Models;
 using TPDev.SimpleReport.SharedLibrary.Context;
 
 namespace TPDev.SimpleReport.SharedLibrary.Services.Helper
@@ -16,21 +17,71 @@ namespace TPDev.SimpleReport.SharedLibrary.Services.Helper
         }
         public static string StringToFile(string content, string fileName, string filePath)
         {
-            var writer = new StreamWriter(Path.Combine(filePath, fileName), true);
-            writer.Write(content);
+            try
+            {
+                var writer = new StreamWriter(Path.Combine(filePath, fileName), true);
+                writer.Write(content);
 
-            writer.Flush();
-            writer.Close();
+                writer.Flush();
+                writer.Close();
+            }
+            catch(Exception ex)
+            {
+                SLLog.Logger.WriteError(new LogData
+                {
+                    Type = LogType.Error,
+                    Source = "FileHelper",
+                    FunctionName = "StringToFile Error!",
+                    Ex = ex,
+                });
+            }
 
             return Path.Combine(filePath, fileName);
         }
 
+        public static string FileToString(string fileName)
+        {
+            try
+            {
+                var reader = new StreamReader(fileName);
+                var content = reader.ReadToEnd();
+
+                reader.Close();
+                return content;
+            }
+            catch(Exception ex)
+            {
+                SLLog.Logger.WriteError(new LogData
+                {
+                    Type = LogType.Error,
+                    Source = "FileHelper",
+                    FunctionName = "FileToString Error!",
+                    Ex = ex,
+                });
+            }
+
+            return string.Empty;
+        }
+
         public static void CleanupFiles(List<string> files)
         {
-            foreach(var file in files)
+            try
             {
-                if (File.Exists(file))
-                    File.Delete(file);
+                foreach (var file in files)
+                {
+                    if (File.Exists(file))
+                        File.Delete(file);
+                }
+            }
+            catch(Exception ex)
+            {
+                SLLog.Logger.WriteError(new LogData
+                {
+                    Type = LogType.Error,
+                    Source = "FileHelper",
+                    FunctionName = "CleanupFiles Error!",
+                    Ex = ex,
+                });
             }
         }
 
@@ -40,14 +91,27 @@ namespace TPDev.SimpleReport.SharedLibrary.Services.Helper
         }
         public static void CleanupCacheFiles(List<string> excludeFiles)
         {
-            foreach(var file in Directory.GetFiles(SLContext.CurrentCtx.CacheDirectory))
+            try
             {
-                if (!File.Exists(file)) continue;
+                foreach (var file in Directory.GetFiles(SLContext.CurrentCtx.CacheDirectory))
+                {
+                    if (!File.Exists(file)) continue;
 
-                var fileFound = excludeFiles.Find(x => x == file);
-                if (fileFound != null) continue;
+                    var fileFound = excludeFiles.Find(x => x == file);
+                    if (fileFound != null) continue;
 
-                File.Delete(file);
+                    File.Delete(file);
+                }
+            }
+            catch(Exception ex)
+            {
+                SLLog.Logger.WriteError(new LogData
+                {
+                    Type = LogType.Error,
+                    Source = "FileHelper",
+                    FunctionName = "CleanupCacheFiles Error!",
+                    Ex = ex,
+                });
             }
         }
     }

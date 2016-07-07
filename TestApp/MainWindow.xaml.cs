@@ -1,6 +1,9 @@
 ﻿using System.Windows;
-using TPDev.SimpleReport.SharedLibrary;
+using TestApp.Helpers;
+using TPDev.SimpleReport.Service;
+using TPDev.SimpleReport.SharedLibrary.Models.Report;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
+using TPDev.SimpleReport.Viewer;
 
 namespace TestApp
 {
@@ -9,11 +12,20 @@ namespace TestApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ReportService m_Reporter { get; set; }
+        private ViewerService m_ReportViewer { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
+
+            m_Reporter = new ReportService();
+            m_Reporter.InitLogger("ReporterLog");
+
+            m_ReportViewer = new ViewerService();
+            m_ReportViewer.InitLogger("ReporterLog");
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -44,8 +56,21 @@ namespace TestApp
 
         private void OnCleanupCacheClick(object sender, RoutedEventArgs e)
         {
-            Bootstrapper.Boot();
             FileHelper.CleanupCacheFiles();
+        }
+
+        private void OnLoadSampleReportClick(object sender, RoutedEventArgs e)
+        {
+            var template = m_Reporter.Templater.LoadTemplate("SampleTemplate");
+
+            var samleTbl = SampleDataGenerator.GenerateSampleTable();
+            var reportData = new SimpleReportData
+            {
+                TemplateData = template,
+            };
+
+            var printData = m_Reporter.CreateReport(reportData);
+            m_ReportViewer.LoadReport(printData);
         }
     }
 }

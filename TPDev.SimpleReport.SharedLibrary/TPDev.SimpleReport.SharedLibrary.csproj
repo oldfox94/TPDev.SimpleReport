@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\_External\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +49,23 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Context\CurrentContext.cs" />
     <Compile Include="Context\SLContext.cs" />
+    <Compile Include="Events\SLEvents.cs" />
+    <Compile Include="Models\Global\Enums.cs" />
+    <Compile Include="Models\Global\SimpleEventArgs.cs" />
+    <Compile Include="Models\Global\SimpleReportConfigData.cs" />
     <Compile Include="Models\Report\SimpleReportData.cs" />
+    <Compile Include="Models\Report\SimpleReportPrintData.cs" />
     <Compile Include="Models\Template\SimpleTemplateData.cs" />
     <Compile Include="Models\Viewer\SimpleViewerData.cs" />
     <Compile Include="Services\Helper\FileHelper.cs" />
+    <Compile Include="Services\Helper\XmlHelper.cs" />
+    <Compile Include="Services\Viewer\HtmlHelper.cs" />
     <Compile Include="Services\Viewer\ViewerHelperService.cs" />
+    <Compile Include="SLConfig.cs" />
     <Compile Include="SLLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
