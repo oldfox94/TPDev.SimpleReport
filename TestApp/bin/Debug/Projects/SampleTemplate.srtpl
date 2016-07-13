@@ -3,6 +3,9 @@
 		<title>SampleReport</title>
 	</head>
 	<body>
-
+		<h3>Sample Report</h3>
+		
+		<table id="tbl">
+		</table>
 	</body>
 </html>
