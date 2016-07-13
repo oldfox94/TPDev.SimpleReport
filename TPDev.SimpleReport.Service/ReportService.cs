@@ -1,5 +1,6 @@
 ﻿using System;
 using TPDev.SimpleReport.Logger.Models;
+using TPDev.SimpleReport.Service.Services.Builder;
 using TPDev.SimpleReport.SharedLibrary;
 using TPDev.SimpleReport.SharedLibrary.Context;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
@@ -46,6 +47,9 @@ namespace TPDev.SimpleReport.Service
             {
 
             };
+
+            var builder = new ReportBuilder();
+            builder.BuildReport(reportData);
 
             return data;
         }

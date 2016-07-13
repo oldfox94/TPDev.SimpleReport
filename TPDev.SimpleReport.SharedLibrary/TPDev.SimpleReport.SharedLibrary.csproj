@@ -53,6 +53,7 @@
     <Compile Include="Models\Global\Enums.cs" />
     <Compile Include="Models\Global\SimpleEventArgs.cs" />
     <Compile Include="Models\Global\SimpleReportConfigData.cs" />
+    <Compile Include="Models\Report\SimpleReportContentData.cs" />
     <Compile Include="Models\Report\SimpleReportData.cs" />
     <Compile Include="Models\Report\SimpleReportPrintData.cs" />
     <Compile Include="Models\Template\SimpleTemplateData.cs" />

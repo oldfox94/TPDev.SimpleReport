@@ -5,7 +5,7 @@
 	<body>
 		<h3>Sample Report</h3>
 		
-		<table id="tbl">
+		<table id="TestTbl">
 		</table>
 	</body>
 </html>

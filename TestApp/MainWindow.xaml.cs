@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Windows;
 using TestApp.Helpers;
 using TPDev.SimpleReport.Service;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
@@ -63,10 +65,14 @@ namespace TestApp
         {
             var template = m_Reporter.Templater.LoadTemplate("SampleTemplate");
 
-            var samleTbl = SampleDataGenerator.GenerateSampleTable();
+            var sampleTbl = SampleDataGenerator.GenerateSampleTable();
             var reportData = new SimpleReportData
             {
                 TemplateData = template,
+                ContentData = new SimpleReportContentData
+                {
+                    ListOfTables = new List<DataTable> { sampleTbl },
+                },
             };
 
             var printData = m_Reporter.CreateReport(reportData);
