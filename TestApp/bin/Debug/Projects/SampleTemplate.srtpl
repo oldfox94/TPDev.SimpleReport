@@ -1,5 +1,7 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="styles\jquery.dataTables.min.css">
+	
 		<title>SampleReport</title>
 	</head>
 	<body>

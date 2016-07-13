@@ -12,6 +12,8 @@ namespace TPDev.SimpleReport.SharedLibrary.Models.Template
         public string FilePath { get; set; }
         public bool FileExists { get { return File.Exists(Path.Combine(FilePath, FileName)); } }
 
+        public List<SimpleStyleData> StyleFiles { get; set; }
+
         public IEnumerable<HtmlNode> HtmlNodeList { get; set; }
     }
 }

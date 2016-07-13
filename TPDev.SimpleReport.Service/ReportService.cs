@@ -43,13 +43,10 @@ namespace TPDev.SimpleReport.Service
 
         public SimpleReportPrintData CreateReport(SimpleReportData reportData)
         {
-            var data = new SimpleReportPrintData
-            {
-
-            };
+            var data = new SimpleReportPrintData();
 
             var builder = new ReportBuilder();
-            builder.BuildReport(reportData);
+            data.HtmlContent = builder.BuildReport(reportData);
 
             return data;
         }

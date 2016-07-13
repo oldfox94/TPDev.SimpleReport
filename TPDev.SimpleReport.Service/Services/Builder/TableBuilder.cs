@@ -21,17 +21,24 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
         private static void Build(HtmlNode node, DataTable tbl)
         {
+            var cnt = 1;
             foreach(DataRow dr in tbl.Rows)
             {
-                var drHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, 1);
-                drHtml.InnerHtml = "<tr></tr>";
+                var drHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, cnt);
+                drHtml.Name = "tr";
+
+                cnt++;
 
                 foreach(DataColumn col in tbl.Columns)
                 {
-                    var colHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, 1);
-                    colHtml.InnerHtml = string.Format("<td>{0}</td>", dr[col.ColumnName].ToString());
+                    var colHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, cnt);
+                    colHtml.Name = "td";
+
+                    colHtml.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
 
                     drHtml.AppendChild(colHtml);
+
+                    cnt++;
                 }
 
                 node.AppendChild(drHtml);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HtmlAgilityPack;
+using System.Collections.Generic;
 using System.IO;
 using TPDev.SimpleReport.SharedLibrary.Models.Template;
 using TPDev.SimpleReport.SharedLibrary.Services.Viewer;
@@ -23,6 +24,8 @@ namespace TPDev.SimpleReport.TemplateManager.Services
                 if(fileInf.Extension == ".srtpl")
                 {
                     var templateData = LoadTemplateFromFile(file);
+                    templateData.StyleFiles = LoadStyleFromTemplate(templateData);
+
                     templateList.Add(templateData.Name, templateData);
                 }
             }
@@ -38,6 +41,31 @@ namespace TPDev.SimpleReport.TemplateManager.Services
             templateData.HtmlNodeList = HtmlHelper.ParseHtml(file);
 
             return templateData;
+        }
+
+        public static List<SimpleStyleData> LoadStyleFromTemplate(SimpleTemplateData data)
+        {
+            var styleList = new List<SimpleStyleData>();
+
+            foreach(HtmlNode node in data.HtmlNodeList)
+            {
+                if(node.OriginalName == "link")
+                {
+                    var isStylesheet = false;
+                    foreach(HtmlAttribute attr in node.Attributes)
+                    {
+                        isStylesheet = attr.OriginalName == "rel" && attr.Value == "stylesheet";
+
+                        if(isStylesheet && attr.OriginalName == "href")
+                        {
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return styleList;
         }
 
         public static string SaveTemplate(SimpleTemplateData template)
