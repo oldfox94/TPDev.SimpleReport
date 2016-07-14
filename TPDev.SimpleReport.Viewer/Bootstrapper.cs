@@ -1,5 +1,4 @@
-﻿using CefSharp;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TPDev.SimpleReport.SharedLibrary.Context;
 using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Models.Viewer;
@@ -25,7 +24,6 @@ namespace TPDev.SimpleReport.Viewer
 
         public static void Shutdown()
         {
-            Cef.Shutdown();
             FileHelper.CleanupFiles(SrvContext.CleanupFiles);
 
             SharedLibrary.Bootstrapper.Shutdown(AppName.Viewer);
