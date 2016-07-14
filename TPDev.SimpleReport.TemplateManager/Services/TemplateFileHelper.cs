@@ -22,8 +22,8 @@ namespace TPDev.SimpleReport.TemplateManager.Services
                 var fileInf = new FileInfo(file);
                 if(fileInf.Extension == ".srtpl")
                 {
-                    var templateData = LoadTemplateFromFile(file);
-                    templateData.StyleFiles = TemplateBuilder.LoadStyleFromTemplate(templateData);
+                    var templateData = new SimpleTemplateData { Name = Path.GetFileNameWithoutExtension(fileInf.Name), FileName = fileInf.Name, FilePath = fileInf.DirectoryName };
+                    templateData.StyleFiles = new List<SimpleStyleData>();
 
                     templateList.Add(templateData.Name, templateData);
                 }

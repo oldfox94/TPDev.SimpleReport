@@ -21,6 +21,8 @@ namespace TestApp
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
 
@@ -33,6 +35,11 @@ namespace TestApp
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            TemplateSelection.ItemsSource = new List<string>
+            {
+                "SampleTemplate",
+                "SampleBootstrapTemplate"
+            };
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -54,7 +61,7 @@ namespace TestApp
 
         private void OnLoadUrlClick(object sender, RoutedEventArgs e)
         {
-            browserOverlay.LoadUrl("www.google.com");
+            browserOverlay.LoadUrl("http://www.google.com");
         }
 
         private void OnCleanupCacheClick(object sender, RoutedEventArgs e)
@@ -62,14 +69,14 @@ namespace TestApp
             FileHelper.CleanupCacheFiles();
         }
 
-        private void OnLoadSampleReportClick(object sender, RoutedEventArgs e)
+        private void OnLoadTemplateClick(object sender, RoutedEventArgs e)
         {
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
 
 
-            var template = m_Reporter.Templater.LoadTemplate("SampleBootstrapTemplate");
+            var template = m_Reporter.Templater.LoadTemplate(TemplateSelection.SelectedValue.ToString());
 
             var sampleTbl = SampleDataGenerator.GenerateSampleTable();
             var reportData = new SimpleReportData

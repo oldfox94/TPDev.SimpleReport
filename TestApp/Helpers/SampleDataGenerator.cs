@@ -20,7 +20,7 @@ namespace TestApp.Helpers
                 var dr = dt.NewRow();
 
                 dr["pk"] = Guid.NewGuid().ToString();
-                dr["Name"] = "TestPerson " + i.ToString();
+                dr["Name"] = "TestPerson " + (i < 10 ? "0" + i.ToString() : i.ToString());
 
                 dt.Rows.Add(dr);
             }

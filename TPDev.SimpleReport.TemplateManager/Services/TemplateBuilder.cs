@@ -7,6 +7,7 @@ using TPDev.SimpleReport.SharedLibrary;
 using TPDev.SimpleReport.SharedLibrary.Context;
 using TPDev.SimpleReport.SharedLibrary.Models.Template;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
+using TPDev.SimpleReport.SharedLibrary.Services.Viewer;
 
 namespace TPDev.SimpleReport.TemplateManager.Services
 {
@@ -18,7 +19,10 @@ namespace TPDev.SimpleReport.TemplateManager.Services
 
             var data = new SimpleTemplateData();
             if (Settings.TemplateList.ContainsKey(templateName) && Settings.TemplateList[templateName].FileExists)
+            {
                 data = Settings.TemplateList[templateName];
+                LoadTemplateFromTemplateData(data);
+            }
             else
             {
                 var templateFile = Path.Combine(SLContext.Config.ProjectPath, templateName);
@@ -31,17 +35,15 @@ namespace TPDev.SimpleReport.TemplateManager.Services
                 }
             }
 
+            data.StyleFiles = LoadStyleFromTemplate(data);
             CopyStyleToTemplate(data);
 
             return data;
         }
 
-        public static SimpleTemplateData LoadTemplateFromTemplateData(SimpleTemplateData data)
+        public static void LoadTemplateFromTemplateData(SimpleTemplateData data)
         {
-
-
-
-            return data;
+            data.HtmlNodeList = HtmlHelper.ParseHtml(Path.Combine(data.FilePath, data.FileName));
         }
 
         public static List<SimpleStyleData> LoadStyleFromTemplate(SimpleTemplateData data)
