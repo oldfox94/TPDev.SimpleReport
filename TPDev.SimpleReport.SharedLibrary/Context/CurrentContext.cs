@@ -9,5 +9,16 @@
 
         public string ConfigPath { get; set; }
         public string ConfigFileName { get; set; }
+
+
+        private int InternalNodeId { get; set; }
+        public int TemplateNodeId
+        {
+            get
+            {
+                InternalNodeId++;
+                return InternalNodeId;
+            }
+        }
     }
 }

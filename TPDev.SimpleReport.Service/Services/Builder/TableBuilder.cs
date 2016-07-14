@@ -1,47 +1,65 @@
 ﻿using HtmlAgilityPack;
 using System.Data;
+using TPDev.SimpleReport.SharedLibrary.Context;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
 
 namespace TPDev.SimpleReport.Service.Services.Builder
 {
     public static class TableBuilder
     {
-        public static void BuildTable(HtmlNode node, SimpleReportContentData data, string tableName)
+        public static void BuildTable(HtmlNode node, SimpleContentData data, string tableName)
         {
             foreach(var tbl in data.ListOfTables)
             {
                 if(tbl.TableName == tableName)
                 {
-                    //node.AppendChild(new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, 1));
-                    Build(node, tbl);
+                    BuildHeaders(node, tbl);
+                    BuildRows(node, tbl);
                     break;
                 }
             }
         }
 
-        private static void Build(HtmlNode node, DataTable tbl)
+        private static void BuildHeaders(HtmlNode node, DataTable tbl)
         {
-            var cnt = 1;
+            var headNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
+            headNode.Name = "thead";
+
+            var rowNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
+            rowNode.Name = "tr";
+
+            foreach (DataColumn col in tbl.Columns)
+            {
+                var colNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
+                colNode.Name = "th";
+
+                colNode.InnerHtml = string.Format("{0}", col.ColumnName);
+
+                rowNode.AppendChild(colNode);
+            }
+
+            headNode.AppendChild(rowNode);
+            node.AppendChild(headNode);
+        }
+
+        private static void BuildRows(HtmlNode node, DataTable tbl)
+        {
             foreach(DataRow dr in tbl.Rows)
             {
-                var drHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, cnt);
-                drHtml.Name = "tr";
-
-                cnt++;
+                var drNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
+                drNode.Name = "tr";
 
                 foreach(DataColumn col in tbl.Columns)
                 {
-                    var colHtml = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, cnt);
-                    colHtml.Name = "td";
+                    var colNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
+                    colNode.Name = "td";
 
-                    colHtml.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
+                    colNode.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
 
-                    drHtml.AppendChild(colHtml);
-
-                    cnt++;
+                    drNode.AppendChild(colNode);
                 }
 
-                node.AppendChild(drHtml);
+                node.AppendChild(drNode);
             }
         }
     }

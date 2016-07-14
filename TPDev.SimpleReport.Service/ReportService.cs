@@ -41,9 +41,9 @@ namespace TPDev.SimpleReport.Service
             SLLog.WriteInfo("InitLogger", "Logger successfully initialized!");
         }
 
-        public SimpleReportPrintData CreateReport(SimpleReportData reportData)
+        public SimplePrintData CreateReport(SimpleReportData reportData)
         {
-            var data = new SimpleReportPrintData();
+            var data = new SimplePrintData();
 
             var builder = new ReportBuilder();
             data.HtmlContent = builder.BuildReport(reportData);

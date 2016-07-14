@@ -394,3 +394,17 @@ TPDev.SimpleReport.Viewer/bin/x86/Debug/widevinecdmadapter.dll
 TPDev.SimpleReport.Viewer/bin/x86/Release
 TPDev.SimpleReport.Viewer/bin/Debug
 TestApp/bin/Debug/CefSharp.xml
+TestApp/bin/Release/HtmlAgilityPack.dll
+TestApp/bin/Release/HtmlAgilityPack.pdb
+TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.g.i.cs
+TPDev.SimpleReport.Viewer/obj/Release/Views/NativeWebBrowserOverlay.baml
+TPDev.SimpleReport.Viewer/obj/Release/Views/NativeWebBrowserOverlay.g.cs
+TPDev.SimpleReport.Viewer/obj/Release/Views/NativeWebBrowserOverlay.g.i.cs
+TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/NativeWebBrowserOverlay.baml
+TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/NativeWebBrowserOverlay.g.cs
+TPDev.SimpleReport.Viewer/obj/x86/Debug/Views/NativeWebBrowserOverlay.g.i.cs
+TPDev.SimpleReport.Viewer/obj/x86/Debug/build.force
+TPDev.SimpleReport.Viewer/obj/x86/Release/Views/NativeWebBrowserOverlay.g.i.cs
+TPDev.SimpleReport.Viewer/obj/x86/Release/build.force
+TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.baml
+TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.g.cs

@@ -1,0 +1,34 @@
+<html lang="de">
+	<head>
+		<meta charset="UTF-8">		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="styles\custom.css">	
+		<link rel="stylesheet" href="styles\bootstrap.min.css">
+		<link rel="stylesheet" href="styles\dataTables.bootstrap.min.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+		<title>SampleBootstrapReport</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Sample Bootstrap Report</h1>
+			<p>This ist a sample report from TPDev.SimpleReport using <mark>Bootstrap</mark></p>
+		</div>
+		
+		<table id="TestTbl" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		</table>	
+		
+		<br/><br/>
+		<div class="footerDiv">
+			<ul>
+				<li class="footerText">Copyright &copy; tpDev 2016</li>
+				<li class="footerText"><a href="http://www.tpdev.at">www.tpdev.at</a></li>
+				<li class="footerText"><a href="mailto:office@tpdev.at">office@tpdev.at</a></li>
+				<li id="appVersion" class="footerText"></li>
+			</ul>
+		</div>
+	</body>
+</html>

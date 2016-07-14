@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Windows;
 using TestApp.Helpers;
 using TPDev.SimpleReport.Service;
@@ -63,14 +64,20 @@ namespace TestApp
 
         private void OnLoadSampleReportClick(object sender, RoutedEventArgs e)
         {
-            var template = m_Reporter.Templater.LoadTemplate("SampleTemplate");
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+
+
+            var template = m_Reporter.Templater.LoadTemplate("SampleBootstrapTemplate");
 
             var sampleTbl = SampleDataGenerator.GenerateSampleTable();
             var reportData = new SimpleReportData
             {
                 TemplateData = template,
-                ContentData = new SimpleReportContentData
+                ContentData = new SimpleContentData
                 {
+                    ListOfTexts = new Dictionary<string, string> { { "appVersion", version } },
                     ListOfTables = new List<DataTable> { sampleTbl },
                 },
             };

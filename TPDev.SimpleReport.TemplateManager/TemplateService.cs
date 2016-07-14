@@ -49,10 +49,8 @@ namespace TPDev.SimpleReport.TemplateManager
         {
             try
             {
-                if (Settings.TemplateList.ContainsKey(templateName) && Settings.TemplateList[templateName].FileExists)
-                    return Settings.TemplateList[templateName];
-                else
-                    SLLog.WriteWarning("LoadTemplate", ToString(), "Template wurde nicht gefunden!");
+                var template = TemplateBuilder.BuildTemplate(templateName);
+                if (template != null) return template;             
             }
             catch(Exception ex)
             {

@@ -1,0 +1,16 @@
+ul
+{
+	list-style-type: none;
+}
+
+.footerText
+{
+	text-align: left;
+}
+
+.footerDiv
+{
+    background-color: #E2E2E2;
+	width: 100%;
+    margin: 0 auto;
+}

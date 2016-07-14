@@ -24,7 +24,7 @@ namespace TPDev.SimpleReport.Viewer
             SLLog.WriteInfo("InitLogger", "Logger successfully initialized!");
         }
 
-        public void LoadReport(SimpleReportPrintData reportPrintData)
+        public void LoadReport(SimplePrintData reportPrintData)
         {
 
             SLEvents.FireLoadReport(new SimpleEventArgs { HtmlContent = reportPrintData.HtmlContent });

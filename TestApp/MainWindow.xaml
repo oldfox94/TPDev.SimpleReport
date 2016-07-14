@@ -6,7 +6,7 @@
         xmlns:tpdev="clr-namespace:TPDev.SimpleReport.Viewer.Views;assembly=TPDev.SimpleReport.Viewer"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-        Title="TestApp" Height="450" Width="675" WindowStartupLocation="CenterScreen">
+        Title="TestApp" Height="620" Width="1024" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -25,8 +25,8 @@
             <Button Name="ButLoadSampleReport" Content="Load Sample Report" Click="OnLoadSampleReportClick"/>
         </StackPanel>
         
-        <tpdev:WebBrowserOverlay Grid.Row="1" x:Name="browserOverlay">
+        <tpdev:NativeWebBrowserOverlay Grid.Row="1" x:Name="browserOverlay">
             
-        </tpdev:WebBrowserOverlay>
+        </tpdev:NativeWebBrowserOverlay>
     </Grid>
 </Window>
