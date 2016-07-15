@@ -38,7 +38,8 @@ namespace TestApp
             TemplateSelection.ItemsSource = new List<string>
             {
                 "SampleTemplate",
-                "SampleBootstrapTemplate"
+                "SampleBootstrapTemplate",
+                "SampleAngularJsTemplate"
             };
         }
 
