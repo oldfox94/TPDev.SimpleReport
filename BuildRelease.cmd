@@ -1,5 +1,5 @@
 echo Cleanup Release folder ...
-del Release\*.*  /s /q
+del _Release\*.*  /s /q
 
 
 call CopyExternal.cmd
