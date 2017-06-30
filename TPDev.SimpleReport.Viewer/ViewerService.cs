@@ -8,9 +8,9 @@ namespace TPDev.SimpleReport.Viewer
 {
     public class ViewerService
     {
-        public ViewerService()
+        public ViewerService(SimpleReportConfigData configData)
         {
-            Bootstrapper.Boot();
+            Bootstrapper.Boot(configData);
         }
 
         public void InitLogger(string logFileName, string logPath = null)

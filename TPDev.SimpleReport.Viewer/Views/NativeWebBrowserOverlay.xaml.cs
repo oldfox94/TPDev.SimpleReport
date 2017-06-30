@@ -21,7 +21,7 @@ namespace TPDev.SimpleReport.Viewer.Views
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
 
-            Bootstrapper.Boot();
+            Bootstrapper.Boot(null);
             Helper = new ViewerHelperService();
 
             m_Browser = browserCtrl;

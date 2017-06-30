@@ -9,11 +9,11 @@ namespace TPDev.SimpleReport.Viewer
 {
     public class Bootstrapper
     {
-        public static void Boot()
+        public static void Boot(SimpleReportConfigData configData)
         {
             if (SLContext.IsViewerInitialized) return;
 
-            SharedLibrary.Bootstrapper.Boot(AppName.Viewer);
+            SharedLibrary.Bootstrapper.Boot(configData, AppName.Viewer);
 
             SrvContext.ViewerData = new SimpleViewerData();
             SrvContext.CleanupFiles = new List<string>();

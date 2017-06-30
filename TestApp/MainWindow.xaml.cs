@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using TestApp.Helpers;
 using TPDev.SimpleReport.Service;
+using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
 using TPDev.SimpleReport.Viewer;
@@ -26,10 +27,12 @@ namespace TestApp
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
 
-            m_Reporter = new ReportService();
+            var configData = new SimpleReportConfigData { };
+
+            m_Reporter = new ReportService(configData);
             m_Reporter.InitLogger("ReporterLog");
 
-            m_ReportViewer = new ViewerService();
+            m_ReportViewer = new ViewerService(configData);
             m_ReportViewer.InitLogger("ReporterLog");
         }
 

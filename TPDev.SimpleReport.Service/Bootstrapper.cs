@@ -5,11 +5,11 @@ namespace TPDev.SimpleReport.Service
 {
     public class Bootstrapper
     {
-        public static void Boot()
+        public static void Boot(SimpleReportConfigData configData)
         {
             if (SLContext.IsServiceInitialized) return;
 
-            SharedLibrary.Bootstrapper.Boot(AppName.Reporter);
+            SharedLibrary.Bootstrapper.Boot(configData, AppName.Reporter);
         }
 
         public static void Shutdown()

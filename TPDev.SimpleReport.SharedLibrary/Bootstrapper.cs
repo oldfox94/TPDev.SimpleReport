@@ -7,7 +7,7 @@ namespace TPDev.SimpleReport.SharedLibrary
 {
     public class Bootstrapper
     {
-        public static void Boot(AppName appName)
+        public static void Boot(SimpleReportConfigData configData, AppName appName)
         {
             if (SLContext.CurrentCtx != null) return;
 
@@ -21,6 +21,7 @@ namespace TPDev.SimpleReport.SharedLibrary
             SLContext.CurrentCtx.ConfigPath = SLContext.CurrentCtx.WorkingDirectory;
             SLContext.CurrentCtx.ConfigFileName = "SimpleReportConfig.xml";
 
+            SLContext.Config = configData;
             if (SLContext.Config == null || string.IsNullOrEmpty(SLContext.Config.ProjectPath))
                 SLContext.Config = new SimpleReportConfigData { ProjectPath = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Projects") };
 

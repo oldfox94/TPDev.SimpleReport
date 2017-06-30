@@ -3,6 +3,7 @@ using TPDev.SimpleReport.Logger.Models;
 using TPDev.SimpleReport.Service.Services.Builder;
 using TPDev.SimpleReport.SharedLibrary;
 using TPDev.SimpleReport.SharedLibrary.Context;
+using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
 using TPDev.SimpleReport.TemplateManager;
 
@@ -11,11 +12,11 @@ namespace TPDev.SimpleReport.Service
     public class ReportService
     {
         public TemplateService Templater { get; set; }
-        public ReportService()
+        public ReportService(SimpleReportConfigData configData)
         {
             try
             {
-                Bootstrapper.Boot();
+                Bootstrapper.Boot(configData);
 
                 Templater = new TemplateService(SLContext.Config.ProjectPath);
             }

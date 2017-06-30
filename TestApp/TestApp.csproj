@@ -46,6 +46,13 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TPDev.SimpleReport.Viewer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Release\TPDev.SimpleReport.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="TPDev.SimpleReportService">
+      <HintPath>..\_Release\TPDev.SimpleReportService.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -99,28 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TPDev.SimpleReport.Logger\TPDev.SimpleReport.Logger.csproj">
-      <Project>{b73f8a0c-93f0-4f3a-ae61-ab8bfcc074de}</Project>
-      <Name>TPDev.SimpleReport.Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.Service\TPDev.SimpleReport.Service.csproj">
-      <Project>{88d97dd7-185e-4a2b-b1e4-af30da8c450e}</Project>
-      <Name>TPDev.SimpleReport.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.SharedLibrary\TPDev.SimpleReport.SharedLibrary.csproj">
-      <Project>{aba4622d-cd9d-4ec9-bb9e-a879b736faa0}</Project>
-      <Name>TPDev.SimpleReport.SharedLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.TemplateManager\TPDev.SimpleReport.TemplateManager.csproj">
-      <Project>{401eacbf-e860-491b-833b-4e935ca32ed3}</Project>
-      <Name>TPDev.SimpleReport.TemplateManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.Viewer\TPDev.SimpleReport.Viewer.csproj">
-      <Project>{6406eef7-10db-42ab-add4-168f0dacc583}</Project>
-      <Name>TPDev.SimpleReport.Viewer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
