@@ -62,6 +62,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TPDev.SimpleReportService">
+      <HintPath>..\_Release\TPDev.SimpleReportService.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -75,20 +78,6 @@
     <Compile Include="Views\NativeWebBrowserOverlay.xaml.cs">
       <DependentUpon>NativeWebBrowserOverlay.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TPDev.SimpleReport.Logger\TPDev.SimpleReport.Logger.csproj">
-      <Project>{b73f8a0c-93f0-4f3a-ae61-ab8bfcc074de}</Project>
-      <Name>TPDev.SimpleReport.Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.Service\TPDev.SimpleReport.Service.csproj">
-      <Project>{88d97dd7-185e-4a2b-b1e4-af30da8c450e}</Project>
-      <Name>TPDev.SimpleReport.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TPDev.SimpleReport.SharedLibrary\TPDev.SimpleReport.SharedLibrary.csproj">
-      <Project>{aba4622d-cd9d-4ec9-bb9e-a879b736faa0}</Project>
-      <Name>TPDev.SimpleReport.SharedLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\NativeWebBrowserOverlay.xaml">
