@@ -408,3 +408,5 @@ TPDev.SimpleReport.Viewer/obj/x86/Release/Views/NativeWebBrowserOverlay.g.i.cs
 TPDev.SimpleReport.Viewer/obj/x86/Release/build.force
 TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.baml
 TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.g.cs
+TPDev.SimpleReport.Viewer/obj/Debug/
+TestApp/obj/Debug/
