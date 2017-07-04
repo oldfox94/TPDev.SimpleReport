@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.Windows;
 using TestApp.Helpers;
 using TPDev.SimpleReport.Service;
 using TPDev.SimpleReport.SharedLibrary.Models.Global;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
+using TPDev.SimpleReport.SharedLibrary.Models.Report.TableData;
 using TPDev.SimpleReport.SharedLibrary.Services.Helper;
 using TPDev.SimpleReport.Viewer;
 
@@ -89,7 +89,14 @@ namespace TestApp
                 ContentData = new SimpleContentData
                 {
                     ListOfTexts = new Dictionary<string, string> { { "appVersion", version } },
-                    ListOfTables = new List<DataTable> { sampleTbl },
+                    //ListOfTables = new List<DataTable> { sampleTbl },
+                    ListOfTables = new List<SimpleTableData>
+                    {
+                        new SimpleTableData
+                        {
+                            Table = sampleTbl,
+                        },
+                    },
                 },
             };
 
