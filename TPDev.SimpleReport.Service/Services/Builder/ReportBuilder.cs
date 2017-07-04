@@ -17,6 +17,8 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             foreach(HtmlNode node in reportData.TemplateData.HtmlNodeList)
             {
                 TextBuilder.BuildTexts(node, data);
+                TextBuilder.BuildAttributes(node, data);
+                TextBuilder.BuildVariables(node, data);
 
                 switch(node.OriginalName)
                 {
@@ -27,7 +29,20 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             }
 
             var firstHtmlNode = reportData.TemplateData.HtmlNodeList.First();
-            return firstHtmlNode.OuterHtml;
+            return FinishReport(reportData, firstHtmlNode.OuterHtml);
+        }
+
+        public string FinishReport(SimpleReportData reportData, string content)
+        {
+            if (reportData.ContentData.ListOfVariables != null)
+            {
+                //Replace varText with variable content
+                foreach (var variable in reportData.ContentData.ListOfVariables)
+                {
+                    content = content.Replace(variable.Key, variable.Value);
+                }
+            }
+            return content;
         }
     }
 }

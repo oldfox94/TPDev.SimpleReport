@@ -7,9 +7,6 @@
         public string TempDirectory { get; set; }
         public string CacheDirectory { get; set; }
 
-        public string ConfigPath { get; set; }
-        public string ConfigFileName { get; set; }
-
 
         private int InternalNodeId { get; set; }
         public int TemplateNodeId

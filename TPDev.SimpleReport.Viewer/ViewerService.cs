@@ -24,6 +24,11 @@ namespace TPDev.SimpleReport.Viewer
             SLLog.WriteInfo("InitLogger", "Logger successfully initialized!");
         }
 
+        public void Shutdown()
+        {
+            Bootstrapper.Shutdown();
+        }
+
         public void LoadReport(SimplePrintData reportPrintData)
         {
 

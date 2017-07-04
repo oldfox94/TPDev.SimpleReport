@@ -10,20 +10,15 @@ namespace TPDev.SimpleReport.SharedLibrary
         public static void Boot(SimpleReportConfigData configData, AppName appName)
         {
             if (SLContext.CurrentCtx != null) return;
-
             SLContext.CurrentCtx = new CurrentContext();
-
-            SLContext.CurrentCtx.WorkingDirectory = Environment.CurrentDirectory;
-            SLContext.CurrentCtx.LogDirectory = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Log");
-            SLContext.CurrentCtx.TempDirectory = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Temp");
-            SLContext.CurrentCtx.CacheDirectory = Path.Combine(SLContext.CurrentCtx.TempDirectory, "Cache");
-
-            SLContext.CurrentCtx.ConfigPath = SLContext.CurrentCtx.WorkingDirectory;
-            SLContext.CurrentCtx.ConfigFileName = "SimpleReportConfig.xml";
 
             SLContext.Config = configData;
             if (SLContext.Config == null || string.IsNullOrEmpty(SLContext.Config.ProjectPath))
                 SLContext.Config = new SimpleReportConfigData { ProjectPath = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Projects") };
+
+            if (string.IsNullOrEmpty(SLContext.Config.TempPath))
+                SLContext.Config.TempPath = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Temp");
+
 
             CheckFolders();
 
@@ -60,6 +55,11 @@ namespace TPDev.SimpleReport.SharedLibrary
 
         private static void CheckFolders()
         {
+            SLContext.CurrentCtx.WorkingDirectory = Environment.CurrentDirectory;
+            SLContext.CurrentCtx.LogDirectory = Path.Combine(SLContext.CurrentCtx.WorkingDirectory, "Log");
+            SLContext.CurrentCtx.TempDirectory = SLContext.Config.TempPath;
+            SLContext.CurrentCtx.CacheDirectory = Path.Combine(SLContext.CurrentCtx.TempDirectory, "Cache");
+
             if (!Directory.Exists(SLContext.CurrentCtx.TempDirectory))
                 Directory.CreateDirectory(SLContext.CurrentCtx.TempDirectory);
 
