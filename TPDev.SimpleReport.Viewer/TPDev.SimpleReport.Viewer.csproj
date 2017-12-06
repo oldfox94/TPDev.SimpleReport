@@ -63,7 +63,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="TPDev.SimpleReportService">
-      <HintPath>..\_Release\TPDev.SimpleReportService.dll</HintPath>
+      <HintPath>..\_Debug\TPDev.SimpleReportService.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

@@ -411,3 +411,7 @@ TPDev.SimpleReport.Viewer/obj/Debug/Views/NativeWebBrowserOverlay.g.cs
 TPDev.SimpleReport.Viewer/obj/Debug/
 TestApp/obj/Debug/
 .vs/SimpleReport/v15/.suo
+.vs/SimpleReport/
+TPDev.SimpleReport.Service/obj/Debug/TPDev.SimpleReport.Service.csproj.CopyComplete
+TPDev.SimpleReport.SharedLibrary/obj/Debug/TPDev.SimpleReport.SharedLibrary.csproj.CopyComplete
+TPDev.SimpleReport.TemplateManager/obj/Debug/TPDev.SimpleReport.TemplateManager.csproj.CopyComplete
