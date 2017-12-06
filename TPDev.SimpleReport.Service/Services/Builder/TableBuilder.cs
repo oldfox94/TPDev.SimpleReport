@@ -12,17 +12,16 @@ namespace TPDev.SimpleReport.Service.Services.Builder
     {
         public static void BuildTable(HtmlNode node, SimpleContentData data, string tableName)
         {
-            foreach(var tblData in data.ListOfTables)
-            {
-                if (tblData.Table == null) tblData.Table = new DataTable();
-                if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
+            if (data.ListOfTables == null) return;
 
-                if(tblData.Table.TableName == tableName)
-                {
-                    BuildHeaders(node, tblData);
-                    BuildRows(node, tblData);
-                    break;
-                }
+            var tblData = data.ListOfTables.FirstOrDefault(x => x.Table.TableName == tableName);
+            if (tblData == null) return;
+
+            if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
+            if(tblData.Table.TableName == tableName)
+            {
+                BuildHeaders(node, tblData);
+                BuildRows(node, tblData);
             }
         }
 

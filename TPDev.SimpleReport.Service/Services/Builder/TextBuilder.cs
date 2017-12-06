@@ -17,6 +17,8 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
         public static void BuildAttributes(HtmlNode node, SimpleContentData data)
         {
+            if (data.ListOfAttributes == null) return;
+
             var attrToDelete = new List<HtmlAttribute>();
             foreach(var attr in node.Attributes)
             {

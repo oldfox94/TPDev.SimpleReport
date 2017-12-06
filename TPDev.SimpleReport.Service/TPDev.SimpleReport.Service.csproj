@@ -51,6 +51,7 @@
     <Compile Include="ReportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Builder\ReportBuilder.cs" />
+    <Compile Include="Services\Builder\SelectionBuilder.cs" />
     <Compile Include="Services\Builder\TableBuilder.cs" />
     <Compile Include="Services\Builder\TextBuilder.cs" />
   </ItemGroup>

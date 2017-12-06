@@ -25,6 +25,10 @@ namespace TPDev.SimpleReport.Service.Services.Builder
                     case "table":
                         TableBuilder.BuildTable(node, data, node.Id);
                         break;
+
+                    case "select":
+                        SelectionBuilder.BuildSelections(node, data, node.Id);
+                        break;
                 }
             }
 

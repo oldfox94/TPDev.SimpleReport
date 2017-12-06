@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TPDev.SimpleReport.SharedLibrary.Models.Report.SelectionData;
 using TPDev.SimpleReport.SharedLibrary.Models.Report.TableData;
 
 namespace TPDev.SimpleReport.SharedLibrary.Models.Report
@@ -9,5 +10,6 @@ namespace TPDev.SimpleReport.SharedLibrary.Models.Report
         public Dictionary<string, string> ListOfVariables { get; set; }
         public Dictionary<string, string> ListOfAttributes { get; set; }
         public List<SimpleTableData> ListOfTables { get; set; }
+        public List<SimpleSelectionData> ListOfSelections { get; set; }
     }
 }
