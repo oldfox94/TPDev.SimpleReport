@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System.Collections.Generic;
+using System.Linq;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
 
 namespace TPDev.SimpleReport.Service.Services.Builder
@@ -22,10 +23,12 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             var attrToDelete = new List<HtmlAttribute>();
             foreach(var attr in node.Attributes)
             {
-                if(data.ListOfAttributes != null && data.ListOfAttributes.ContainsKey(attr.Name))
+                var tmpAttrData = new SimpleAttributeData { Id = node.Id, AttrName = attr.Name };
+                if(data.ListOfAttributes != null && data.ListOfAttributes.Keys.FirstOrDefault(x => x.Id == tmpAttrData.Id && x.AttrName == tmpAttrData.AttrName) != null)
                 {
-                    if (!string.IsNullOrEmpty(data.ListOfAttributes[attr.Name]))
-                        attr.Value = data.ListOfAttributes[attr.Name];
+                    tmpAttrData = data.ListOfAttributes.Keys.FirstOrDefault(x => x.Id == tmpAttrData.Id && x.AttrName == tmpAttrData.AttrName);
+                    if (!string.IsNullOrEmpty(data.ListOfAttributes[tmpAttrData]))
+                        attr.Value = data.ListOfAttributes[tmpAttrData];
                     else
                         attrToDelete.Add(attr);
                     continue;
