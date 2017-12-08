@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using TPDev.SimpleReport.Logger.Events;
 using TPDev.SimpleReport.Logger.Models;
 
@@ -80,7 +81,6 @@ namespace TPDev.SimpleReport.Logger
 
         private void LogToFile()
         {
-            var file = new StreamWriter(Settings.LogFile, true);
             foreach (var logEntry in m_LogDataList)
             {
                 if (logEntry.IsInLogFile) continue;
@@ -107,7 +107,7 @@ namespace TPDev.SimpleReport.Logger
                             break;
                     }
 
-                    file.Write(line);
+                    WriteAsync(Settings.LogFile, line);
                     logEntry.IsInLogFile = true;
                 }
                 catch (Exception)
@@ -116,8 +116,13 @@ namespace TPDev.SimpleReport.Logger
                     logEntry.IsInLogFile = false;
                 }
             }
+        }
 
-            file.Close();
+        private ReaderWriterLock locker = new ReaderWriterLock();
+        private void WriteAsync(string path, string line)
+        {
+            locker.AcquireWriterLock(int.MaxValue);
+            File.AppendAllLines(path, new[] { line });
         }
     }
 }
