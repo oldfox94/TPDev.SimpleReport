@@ -20,7 +20,9 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
             if(tblData.Table.TableName == tableName)
             {
-                BuildHeaders(node, tblData);
+                if(!tblData.HeaderAlreadyExists)
+                    BuildHeaders(node, tblData);
+
                 BuildRows(node, tblData);
             }
         }
@@ -37,12 +39,13 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
             foreach (DataColumn col in tbl.Columns)
             {
+                var colProps = GetColumnProps(data, col);
                 var colNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
                 colNode.Name = "th";
 
-                colNode.InnerHtml = string.Format("{0}", col.ColumnName);
+                colNode.InnerHtml = string.Format("{0}", colProps.DisplayName);
 
-                if (!ValidateColumnProbs(col, colNode, data)) continue;
+                if (colProps.IsHidden) continue;
                 rowNode.AppendChild(colNode);
             }
 
@@ -66,7 +69,7 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
                     colNode.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
 
-                    if (!ValidateColumnProbs(col, colNode, data)) continue;
+                    if (!GetColumnIsHidden(data, col)) continue;
                     drNode.AppendChild(colNode);
                 }
 
@@ -74,15 +77,14 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             }
         }
 
-        private static bool ValidateColumnProbs(DataColumn col, HtmlNode colNode, SimpleTableData data)
+        private static bool GetColumnIsHidden(SimpleTableData data, DataColumn col)
+        {
+            return GetColumnProps(data, col).IsHidden;
+        }
+        private static SimpleColumnProperties GetColumnProps(SimpleTableData data, DataColumn col)
         {
             var columnProps = data.ListOfColumnProperties.FirstOrDefault(x => x.ColumnName == col.ColumnName);
-            if (columnProps != null)
-            {
-                if (columnProps.IsHidden) return false;
-            }
-
-            return true;
+            return columnProps != null ? columnProps : new SimpleColumnProperties { ColumnName = col.ColumnName, DisplayName = col.ColumnName };
         }
     }
 }

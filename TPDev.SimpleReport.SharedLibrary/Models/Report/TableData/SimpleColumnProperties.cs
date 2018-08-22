@@ -4,6 +4,7 @@
     {
         public string ColumnName { get; set; }
 
+        public string DisplayName { get; set; }
         public bool IsHidden { get; set; }
     }
 }
