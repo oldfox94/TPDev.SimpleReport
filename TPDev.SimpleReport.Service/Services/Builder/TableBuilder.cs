@@ -69,7 +69,7 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
                     colNode.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
 
-                    if (!GetColumnIsHidden(data, col)) continue;
+                    if (GetColumnIsHidden(data, col)) continue;
                     drNode.AppendChild(colNode);
                 }
 
