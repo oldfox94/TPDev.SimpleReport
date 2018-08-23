@@ -20,10 +20,25 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
             if(tblData.Table.TableName == tableName)
             {
+                ArrangeColumns(tblData.Table, tblData.ListOfColumnProperties);
                 if(!tblData.HeaderAlreadyExists)
                     BuildHeaders(node, tblData);
 
                 BuildRows(node, tblData);
+            }
+        }
+
+        private static void ArrangeColumns(DataTable tbl, List<SimpleColumnProperties> columnProperties)
+        {
+            if (tbl == null) return;
+            if (columnProperties == null) return;
+
+            int columnIndex = 0;
+            foreach(var colProp in columnProperties.OrderBy(x => x.SortOrder))
+            {
+                if (!tbl.Columns.Contains(colProp.ColumnName)) continue;
+                tbl.Columns[colProp.ColumnName].SetOrdinal(columnIndex);
+                columnIndex++;
             }
         }
 

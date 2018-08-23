@@ -6,5 +6,7 @@
 
         public string DisplayName { get; set; }
         public bool IsHidden { get; set; }
+
+        public int SortOrder { get; set; }
     }
 }
