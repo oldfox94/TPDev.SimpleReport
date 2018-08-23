@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using TestApp.Helpers;
 using TPDev.SimpleReport.Service;
@@ -27,7 +29,13 @@ namespace TestApp
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
 
-            var configData = new SimpleReportConfigData { };
+            var configData = new SimpleReportConfigData
+            {
+                ProjectPath = Path.Combine(Environment.CurrentDirectory, "Projects"),
+                TempPath = Path.Combine(Environment.CurrentDirectory, "Temp")
+            };
+            if (!Directory.Exists(configData.ProjectPath)) Directory.CreateDirectory(configData.ProjectPath);
+            if (!Directory.Exists(configData.TempPath)) Directory.CreateDirectory(configData.TempPath);
 
             m_Reporter = new ReportService(configData);
             m_Reporter.InitLogger("ReporterLog");
@@ -48,24 +56,24 @@ namespace TestApp
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            browserOverlay.Dispose();
+            //browserOverlay.Dispose();
         }
 
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)
         {
-            browserOverlay.Refresh();
+            //browserOverlay.Refresh();
         }
 
         private void OnLoadHtmlClick(object sender, RoutedEventArgs e)
         {
             var html = Properties.Resources.SampleReportTemplate;
-            browserOverlay.LoadHtml(html);
+            //browserOverlay.LoadHtml(html);
         }
 
         private void OnLoadUrlClick(object sender, RoutedEventArgs e)
         {
-            browserOverlay.LoadUrl("http://www.google.com");
+            //browserOverlay.LoadUrl("http://www.google.com");
         }
 
         private void OnCleanupCacheClick(object sender, RoutedEventArgs e)
@@ -89,7 +97,6 @@ namespace TestApp
                 ContentData = new SimpleContentData
                 {
                     ListOfTexts = new Dictionary<string, string> { { "appVersion", version } },
-                    //ListOfTables = new List<DataTable> { sampleTbl },
                     ListOfTables = new List<SimpleTableData>
                     {
                         new SimpleTableData

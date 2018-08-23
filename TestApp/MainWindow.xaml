@@ -30,10 +30,9 @@
                 <Button Name="ButLoadTemplate" Content="Load" MinWidth="80" Margin="4,4" Click="OnLoadTemplateClick"/>
             </StackPanel>
         </GroupBox>
-        
-        
-        <tpdev:NativeWebBrowserOverlay Grid.Row="2" x:Name="browserOverlay">
-            
-        </tpdev:NativeWebBrowserOverlay>
+
+
+        <!--<tpdev:NativeWebBrowserOverlay Grid.Row="2" x:Name="browserOverlay">
+        </tpdev:NativeWebBrowserOverlay>-->
     </Grid>
 </Window>
