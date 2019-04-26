@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
+using System.Collections.Generic;
 using TPDev.SimpleReport.Logger.Models;
 using TPDev.SimpleReport.Service.Services.Builder;
 using TPDev.SimpleReport.SharedLibrary;
@@ -54,7 +56,32 @@ namespace TPDev.SimpleReport.Service
             var builder = new ReportBuilder();
             data.HtmlContent = builder.BuildReport(reportData);
 
+            Cleanup(reportData);
             return data;
+        }
+
+        private void Cleanup(SimpleReportData reportData)
+        {
+            try
+            {
+                if (reportData.ContentData.ListOfAttributes != null) reportData.ContentData.ListOfAttributes.Clear();
+                if (reportData.ContentData.ListOfSelections != null) reportData.ContentData.ListOfSelections.Clear();
+                if (reportData.ContentData.ListOfTables != null) reportData.ContentData.ListOfTables.Clear();
+                if (reportData.ContentData.ListOfTexts != null) reportData.ContentData.ListOfTexts.Clear();
+                if (reportData.ContentData.ListOfVariables != null) reportData.ContentData.ListOfVariables.Clear();
+                if (reportData.TemplateData.HtmlNodeList != null) reportData.TemplateData.HtmlNodeList = new List<HtmlNode>();
+                if (reportData.TemplateData.StyleFiles != null) reportData.TemplateData.StyleFiles.Clear();
+            }
+            catch(Exception ex)
+            {
+                SLLog.WriteError(new LogData
+                {
+                    Source = ToString(),
+                    FunctionName = "Cleanup Error!",
+                    Ex = ex,
+                });
+            }
+            GC.Collect();
         }
     }
 }
