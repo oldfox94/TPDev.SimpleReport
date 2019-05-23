@@ -8,5 +8,7 @@
         public bool IsHidden { get; set; }
 
         public int SortOrder { get; set; }
+
+        public bool IsIdColumn { get; set; }
     }
 }

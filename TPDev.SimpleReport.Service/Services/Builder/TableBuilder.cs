@@ -77,6 +77,7 @@ namespace TPDev.SimpleReport.Service.Services.Builder
                 var drNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
                 drNode.Name = "tr";
 
+                var rowId = string.Empty;
                 foreach(DataColumn col in tbl.Columns)
                 {
                     var colNode = new HtmlNode(HtmlNodeType.Element, node.OwnerDocument, SLContext.CurrentCtx.TemplateNodeId);
@@ -84,9 +85,15 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
                     colNode.InnerHtml = string.Format("{0}", dr[col.ColumnName].ToString());
 
-                    if (GetColumnIsHidden(data, col)) continue;
+                    var colProps = GetColumnProps(data, col);
+                    if (colProps.IsIdColumn && string.IsNullOrEmpty(rowId)) rowId = dr[col.ColumnName].ToString();
+                    if (colProps.IsHidden) continue;
+
                     drNode.AppendChild(colNode);
                 }
+
+                //Set Row Id
+                if (!string.IsNullOrEmpty(rowId)) drNode.Attributes.Add("id", rowId);
 
                 node.AppendChild(drNode);
             }
