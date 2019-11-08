@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Linq;
 using TPDev.SimpleReport.SharedLibrary.Models.Report;
+using TPDev.SimpleReport.SharedLibrary.Models.Report.TableData;
 
 namespace TPDev.SimpleReport.Service.Services.Builder
 {
@@ -34,6 +35,13 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
             var firstHtmlNode = reportData.TemplateData.HtmlNodeList.First();
             return FinishReport(reportData, firstHtmlNode.OuterHtml);
+        }
+
+        public string BuildTable(SimpleTableData tableData)
+        {
+            if (tableData == null) return "TableData ist null!";
+            var content = TableBuilder.BuildTable(tableData);
+            return content;
         }
 
         public string FinishReport(SimpleReportData reportData, string content)

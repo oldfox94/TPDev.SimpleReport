@@ -18,7 +18,7 @@ namespace TPDev.SimpleReport.Service.Services.Builder
             if (tblData == null) return;
 
             if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
-            if(tblData.Table.TableName == tableName)
+            if (tblData.Table.TableName == tableName)
             {
                 ArrangeColumns(tblData.Table, tblData.ListOfColumnProperties);
                 if(!tblData.HeaderAlreadyExists)
@@ -26,6 +26,19 @@ namespace TPDev.SimpleReport.Service.Services.Builder
 
                 BuildRows(node, tblData);
             }
+        }
+        public static string BuildTable(SimpleTableData tblData)
+        {
+            HtmlDocument doc = new HtmlDocument();
+            HtmlNode node = new HtmlNode(HtmlNodeType.Element, doc, SLContext.CurrentCtx.TemplateNodeId);
+
+            if (tblData.ListOfColumnProperties == null) tblData.ListOfColumnProperties = new List<SimpleColumnProperties>();
+            ArrangeColumns(tblData.Table, tblData.ListOfColumnProperties);
+            if (!tblData.HeaderAlreadyExists)
+                BuildHeaders(node, tblData);
+
+            BuildRows(node, tblData);
+            return node.InnerHtml;
         }
 
         private static void ArrangeColumns(DataTable tbl, List<SimpleColumnProperties> columnProperties)
